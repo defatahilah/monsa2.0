@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\FilesController;
-use App\Models\Files;
+use App\Http\Controllers\FileController;
+use App\Models\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
-Route::get('/', [FilesController::class, 'index']);
+Route::get('/project', [FileController::class, 'index']);
 
 //Coba Upload File
-Route::get('/files', [FilesController::class, 'create']);
-Route::post('/files', [FilesController::class, 'store']);
+// Route::get('/files', [FilesController::class, 'success']);
+// Route::post('/files', [FileController::class, 'create']);
+// Route::post('/files', [FileController::class, 'store']);
+Route::resource('/files', FileController::class);

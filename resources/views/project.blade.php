@@ -10,19 +10,24 @@
     </head>
     <body style="background-color: rgba(2, 0, 36, var(--bg-opacity));
     background: linear-gradient(279deg, rgb(65, 65, 66) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);}">
-        <form action="/files" method="POST" enctype="multipart/form-data">
+        <form action="/files" method="POST" enctype="multipart/form-data" name="file">
             @csrf
-    <div class="form-row justify-content-center">
+    <div class="form-row justify-content-center" style="margin-left: 30px; margin-right: 30px; margin-bottom: 15px; margin-top: 80px;">
         <div class="col-md-4 mt-3 ml-3 form-group">
         <label class="text-gray-100">Upload File</label>
         <div class="custom-file">
-            <input class="custom-file-input" type="file"name="file" id="customFile">
+            <input class="custom-file-input @error('namafile') is-invalid @enderror" type="file"name="namafile" id="customFile">
             <label class="custom-file-label" for="customFile">Pilih File</label>
+            @error('namafile')
+            <div class="invalid-feedback text-white">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
     </div>
 </div>
 <center>
-    <button type="submit" class="btn btn-dark">
+    <button type="submit" class="btn btn-danger">
         <span></span>
         <span></span>
         <span></span>
@@ -39,7 +44,7 @@
         align-items: center;
         width: 95px;
         height: 38px;
-        background: #4e73df;
+        background: #119665;
 
     }
 
@@ -47,7 +52,7 @@
         position: relative;
         display: inline-block;
         padding: 15px 30px;
-        color: #4e73df;
+        color: #1cc88a;
 
 
 
@@ -59,8 +64,8 @@
 
     button:hover {
         color: #255784;
-        background: #4e73df;
-        box-shadow: 0 0 10px #4e73df, 0 0 40px #4e73df, 0 0 80px #4e73df;
+        background: #1cc88a;
+        box-shadow: 0 0 10px #1cc88a, 0 0 40px #1cc88a, 0 0 80px #1cc88a;
         transition-delay: 1s;
     }
 
@@ -78,7 +83,7 @@
         left: -100%;
         width: 100%;
         height: 2px;
-        background: linear-gradient(90deg, transparent, #4e73df);
+        background: linear-gradient(90deg, transparent, #1cc88a);
     }
 
 
@@ -94,7 +99,7 @@
         right: -100%;
         width: 100%;
         height: 2px;
-        background: linear-gradient(270deg, transparent, #4e73df);
+        background: linear-gradient(270deg, transparent, #1cc88a);
     }
 
     button:hover span:nth-child(3) {
@@ -110,7 +115,7 @@
         right: 0;
         width: 2px;
         height: 100%;
-        background: linear-gradient(180deg, transparent, #4e73df);
+        background: linear-gradient(180deg, transparent, #1cc88a);
     }
 
     button:hover span:nth-child(2) {
@@ -126,7 +131,7 @@
         left: 0;
         width: 2px;
         height: 100%;
-        background: linear-gradient(360deg, transparent, #4e73df);
+        background: linear-gradient(360deg, transparent, #1cc88a);
     }
 
     button:hover span:nth-child(4) {
