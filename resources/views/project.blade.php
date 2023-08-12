@@ -6,17 +6,28 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="sb-admin-2.css">
         
-        
+    
         <title>Monsa | {{ $title }}</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <!-- Google Font -->
-      <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
       <!-- Stylesheet -->
-      <link rel="stylesheet" href="style.css">
       {{-- <link rel="stylesheet" href="scriptade.js"> --}}
+      <link rel="stylesheet" href="style.css">
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="{{ asset('jquery/jquery.min.js') }}"></script>
+      <script src="{{ asset('jquery/jquery.js')}}"></script>
+      <script src="{{ asset('jquery-easing/jquery.easing.min.js') }}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.full.min.js"></script>
+      <!-- Include jQuery UI -->
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     </head>
     {{-- <body style="background-color: rgba(2, 0, 36, var(--bg-opacity));
@@ -36,8 +47,8 @@
             
             <div class="mt-2 form-group row justify-content-center">
                 {{-- <label class="col-sm-2 col-form-label text-dark">Upload Files<span style="color: red"><b>*</b></span></label> --}}
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+               
+                {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
                 <link href="style.css" rel="stylesheet">
                 <body>
                 <h1>Upload File</h1>
@@ -51,7 +62,7 @@
                    <p id="message_info"></p>
                 </div>
               <!-- Script -->
-                <script src="script.js"></script>
+                
                 {{-- @error('namafile')
                 <div class="invalid-feedback text-white">
                     {{ $message }}
@@ -64,17 +75,30 @@
             <div class="mt-2 form-group row justify-content-center">
                 <label class="col-sm-2 col-form-label text-dark">Program Studi<span style="color: red"><b>*</b></span></label>
                 <div class="col-sm-4">
-                    <select class="form-control" name="Prodi" id="prodi">
+                    <select name="Prodi" id="prodi" class="js-example-basic-single form-control" >
                         <option value="" disabled selected>-- Pilih --</option>
-                        <option value="1">Prodi I</option>
-                        <option value="2">Prodi II</option>
+                       <optgroup label="Fakultas Farmasi">
+                            <option value="D3F">D3 Farmasi</option>
+                            <option value="S1F">S1 Farmasi</option>
+                            <option value="ATK">Profesi Apoteker</option>
+                       </optgroup>
+                       <optgroup label="Fakultas Ilmu Kesehatan Sains Dan Teknologi">
+                            <option value="D3T">D3 TLM</option>
+                            <option value="S1A">S1 ARS</option>
+                            <option value="S1G">S1 Gizi</option>
+                       </optgroup>
+                       <optgroup label="Fakultas Ilmu Sosial Dan Humaniora">
+                            <option value="S1H">S1 Hukum</option>
+                            <option value="S1M">S1 Manajemen</option>
+                            <option value="S1P">S1 PGSD</option>
+                       </optgroup>
                     </select>
                 </div>
             </div>
             <div class="mt-2 form-group row justify-content-center">
                 <label class="col-sm-2 col-form-label text-dark">Mata Kuliah<span style="color: red"><b>*</b></span></label>
                 <div class="col-sm-4">
-                    <select class="form-control" name="Matkul" id="matkul">
+                    <select class="js-example-basic-single form-control" name="Matkul" id="matkul">
                         <option value="" disabled selected>-- Pilih --</option>
                         <option value="1">Mata Kuliah I</option>
                         <option value="2">Mata Kuliah II</option>
@@ -105,13 +129,13 @@
             <div class="mt-2 form-group row justify-content-center">
                 <label class="col-sm-2 text-dark">Tanggal Ujian<span style="color: red"><b>*</b></span></label>
                 <div class="col-sm-4">
-                <input type="date" class="form-control" type="text" name="Tgl_ujian" id="tgl_ujian">
+                <input class="datepicker form-control" type="text" name="Tgl_ujian" id="tgl_ujian"  placeholder="dd/mm/yyyy">
             </div>
         </div>
             <div class="mt-2 form-group row justify-content-center">
                 <label class="col-sm-2 text-dark">Dosen Pengampu</label>
                 <div class="col-sm-4">
-                    <select class="form-control" name="Dosen" id="d`osen">
+                    <select class="js-example-basic-single form-control" name="Dosen" id="dosen">
                         <option value="" disabled selected>-- Pilih --</option>
                         <option value="1">Dosen Pengampu I</option>
                         <option value="2">Dosen Pengampu II</option>
@@ -245,10 +269,23 @@
     const fileInput = document.getElementById('customFile');
     const fileNameLabel = document.querySelector('label[for="customFile"]');
 
-    fileInput.addEventListener('change', () => {
-        const fileName = fileInput.files[0].name;
-        fileNameLabel.textContent = fileName;
+    // fileInput.addEventListener('change', () => {
+    //     const fileName = fileInput.files[0].name;
+    //     fileNameLabel.textContent = fileName;
+    // });
+    
+    $('.js-example-basic-single').select2({
+            placeholder: '--Pilih--'
+        });
+    
+    $('#semester').select2({
+            placeholder: '--Pilih--',
+            minimumResultsForSearch: Infinity
+        });
+  
+    
+    $('.datepicker').datepicker({
+        dateFormat: 'dd/mm/yy'
     });
-   
-    </script>
+</script>
  
